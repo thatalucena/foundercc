@@ -121,7 +121,7 @@ html.lenis, html.lenis body { height: auto; }
 h1 {
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(30px, 8.4vw, 38px);
+  font-size: clamp(30px, 10vw, 46px);
   line-height: 1.04;
   letter-spacing: -0.025em;
   text-wrap: balance;
@@ -146,6 +146,8 @@ h1 .wi { display: inline-block; will-change: transform; }
   font-size: 16px;
   line-height: 1.5;
   max-width: 62ch;
+  /* distribui melhor as linhas e evita palavra sozinha na última */
+  text-wrap: pretty;
 }
 .lede strong {
   color: var(--tinta-texto);
@@ -233,18 +235,13 @@ h1 .wi { display: inline-block; will-change: transform; }
   place-items: center;
   transition: border-color 0.2s;
 }
-.hl .ring i {
+.hl .ring img {
+  display: block;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   background: var(--papel-escuro);
-  display: grid;
-  place-items: center;
-  font-style: normal;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 16px;
-  color: var(--tinta);
+  object-fit: cover;
 }
 .hl-nome {
   font-size: 12px;

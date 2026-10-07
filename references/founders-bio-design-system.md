@@ -75,7 +75,7 @@ Pilhas com fallback:
 
 | Estilo | Família | Tamanho | Entrelinha | Peso | Extra | Onde |
 | --- | --- | --- | --- | --- | --- | --- |
-| `headline` | Display | 30 a 38px (`clamp(30px, 8.4vw, 38px)`) | 1,04 | 800 | espaçamento -0,025em, `text-wrap: balance` | Tese da página. Uma por página. |
+| `headline` | Display | 30 a 46px (`clamp(30px, 10vw, 46px)`) | 1,04 | 800 | espaçamento -0,025em, `text-wrap: balance` | Tese da página. Uma por página. |
 | `case-titulo` | Display | 22px | 1,1 | 800 | -0,02em | Resultado em destaque na caixa do case. |
 | `numero` | Display | 20px | 1,2 | 800 | -0,02em, números tabulares | Linha de números dos membros. |
 | `prazo` | Display | 18px | 1,2 | 800 | números tabulares, cor `tinta` | "90 dias", "1 ano" na lista de oferta. |
@@ -143,7 +143,7 @@ A página não abre com cabeçalho de perfil (avatar e @). Foi retirado de prop�
 
 ### Destaques
 Inspirado nos destaques do Instagram.
-- Anel de 62px com borda de 2px: `fio` quando inativo, `tinta` quando selecionado. Miolo em `papel-escuro` com as iniciais em `tinta` (Display 800, 16px).
+- Anel de 62px com borda de 2px: `fio` quando inativo, `tinta` quando selecionado. Miolo com a foto do membro em círculo (`site/assets/img/cases/`, 192×192px, fundo `papel-escuro` enquanto carrega).
 - Nome abaixo em `legenda`, até duas linhas, largura de 64px.
 - Faixa com rolagem lateral, sem barra visível, sangrando até a borda da tela.
 - O primeiro já vem selecionado, para a caixa do case nunca aparecer vazia.

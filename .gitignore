@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Vercel
+.vercel
+
+# Dependências e logs
+node_modules/
+*.log

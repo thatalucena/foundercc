@@ -144,7 +144,7 @@
   /* ---------- Estado inicial ---------- */
   var q = gsap.utils.toArray;
   var words = h1 ? q(".wi", h1) : [];
-  var lede = document.querySelector(".lede");
+  var lede = q(".lede");
   var stats = document.querySelector(".stats");
   var statItems = q(".stat");
   var casesLabel = document.querySelector("#t-cases");
@@ -167,7 +167,7 @@
 
   intro
     .to(words, { yPercent: 0, duration: 0.85, stagger: 0.045 })
-    .to(lede, { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.55")
+    .to(lede, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.12 }, "-=0.55")
     .to(stats, { autoAlpha: 1, duration: 0.4 }, "-=0.45")
     .to(statItems, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 }, "<")
     .add(function () {
