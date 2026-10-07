@@ -36,5 +36,5 @@
 
 ## Como começar
 
-- [Fazer o diagnóstico](https://www.seudominio.com.br/): 2 minutos, sem custo.
+- [Fazer o diagnóstico](https://foundercc-site.vercel.app/): 2 minutos, sem custo.
 - [Instagram @founders.cc](https://www.instagram.com/founders.cc/)
