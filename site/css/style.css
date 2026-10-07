@@ -1,0 +1,417 @@
+/* =========================================================
+   Founders · Link da Bio
+   Gravura em uma tinta só: papel creme + tinta azul.
+   Tokens e escala seguem references/founders-bio-design-system.md
+   ========================================================= */
+
+/* ---------- Fontes (locais, variáveis, subset latino) ---------- */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../assets/fonts/bricolage-grotesque-var.woff2") format("woff2");
+  font-weight: 600 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("../assets/fonts/figtree-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  /* cores — tema claro */
+  --papel: #F3EDDF;
+  --papel-escuro: #EAE3D1;
+  --tinta-texto: #101A5E;
+  --tinta-apoio: #565C82;
+  --fio: #DCD3BE;
+  --tinta: #2334BD;
+  --tinta-sobre-azul: #F3EDDF;
+  --azul-lavado: #E2DFE6;
+
+  /* tipografia */
+  --display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* espaçamento */
+  --respiro-lateral: 18px;
+  --entre-blocos: 22px;
+  --interno: 16px;
+  --interno-curto: 14px;
+  --vao: 10px;
+  --vao-curto: 6px;
+
+  /* raios e linhas */
+  --raio-botao: 12px;
+  --raio-quadro: 14px;
+  --raio-lista: 16px;
+  --filete: 1px;
+
+  /* sempre papel: a página não acompanha o modo escuro do aparelho */
+  color-scheme: only light;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--papel);
+  color: var(--tinta-texto);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+/* Esconde o que vai animar até o GSAP assumir (só com movimento ligado) */
+.anim [data-anim] { visibility: hidden; }
+
+/* ---------- Layout ---------- */
+.wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  padding-inline: var(--respiro-lateral);
+  padding-top: calc(20px + env(safe-area-inset-top, 0px));
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--entre-blocos);
+}
+
+/* ---------- 1. Tese ---------- */
+.tese {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(30px, 8.4vw, 38px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+h1 em {
+  font-style: normal;
+  color: var(--tinta);
+}
+
+/* máscara das palavras da headline (criada pelo JS) */
+h1 .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+h1 .wi { display: inline-block; will-change: transform; }
+
+.lede {
+  color: var(--tinta-apoio);
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 62ch;
+}
+.lede strong {
+  color: var(--tinta-texto);
+  font-weight: 600;
+}
+
+/* ---------- Rubrica ---------- */
+.rubrica {
+  font-family: var(--body);
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-apoio);
+  margin-bottom: var(--vao);
+}
+
+/* ---------- 2. Números ---------- */
+.stats {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-block: var(--filete) solid var(--fio);
+  padding-block: var(--interno-curto);
+}
+.stat {
+  text-align: center;
+  min-width: 0;
+  padding-inline: 4px;
+}
+.stat + .stat { border-left: var(--filete) solid var(--fio); }
+.stat b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 800;
+  /* 20px no padrão; encolhe só abaixo de ~400px para "+R$200 mil" caber na coluna */
+  font-size: clamp(15px, 5vw, 20px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.stat small {
+  display: block;
+  color: var(--tinta-apoio);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+/* ---------- 3. Destaques ---------- */
+.highlights {
+  display: flex;
+  gap: var(--interno-curto);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  margin-inline: calc(var(--respiro-lateral) * -1);
+  padding: 4px var(--respiro-lateral);
+  scroll-padding-inline: var(--respiro-lateral);
+}
+.highlights::-webkit-scrollbar { display: none; }
+
+.hl {
+  flex: none;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--vao-curto);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--tinta-texto);
+  font: inherit;
+  cursor: pointer;
+}
+.hl .ring {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  padding: 2px;
+  border: 2px solid var(--fio);
+  display: grid;
+  place-items: center;
+  transition: border-color 0.2s;
+}
+.hl .ring i {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--papel-escuro);
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--tinta);
+}
+.hl-nome {
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 500;
+  text-align: center;
+}
+.hl[aria-pressed="true"] .ring { border-color: var(--tinta); }
+.hl:focus-visible {
+  outline: 2px solid var(--tinta);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.case {
+  margin-top: 12px;
+  background: var(--papel-escuro);
+  border-radius: var(--raio-quadro);
+  padding: var(--interno-curto) var(--interno);
+}
+.case-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.case-item[hidden] { display: none; }
+.case-titulo {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.case-item p:not(.case-titulo) {
+  color: var(--tinta-apoio);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ---------- 4. O que você recebe ---------- */
+.offer {
+  border: var(--filete) solid var(--fio);
+  border-radius: var(--raio-lista);
+  overflow: hidden;
+}
+.row {
+  display: flex;
+  gap: var(--interno-curto);
+  align-items: flex-start;
+  padding: var(--interno-curto) var(--interno);
+}
+.row + .row { border-top: var(--filete) solid var(--fio); }
+.row .k {
+  flex: none;
+  width: 52px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+.row .v { min-width: 0; }
+.row .v b {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.row .v span {
+  display: block;
+  color: var(--tinta-apoio);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ---------- 5. Pra quem é / não é ---------- */
+.fit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--vao);
+}
+.fit > div {
+  min-width: 0;
+  border-radius: var(--raio-quadro);
+  padding: var(--interno-curto);
+  background: var(--papel-escuro);
+}
+.fit h2 {
+  margin: 0 0 8px;
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--tinta-texto);
+}
+.fit .yes { background: var(--azul-lavado); }
+.fit .yes h2 { color: var(--tinta); }
+.fit ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vao-curto);
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: var(--tinta-apoio);
+}
+@media (max-width: 360px) {
+  .fit { grid-template-columns: 1fr; }
+}
+
+/* ---------- 6. Assinatura ---------- */
+.sign p {
+  color: var(--tinta-apoio);
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ---------- 7. Botão fixo ---------- */
+.cta-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 18px var(--respiro-lateral) calc(16px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(to top, var(--papel) 70%, transparent);
+  pointer-events: none;
+}
+.cta {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 444px;
+  min-height: 56px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  border-radius: var(--raio-botao);
+  background: var(--tinta);
+  color: var(--tinta-sobre-azul);
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.15;
+  text-decoration: none;
+  transition: transform 0.15s;
+}
+.cta small {
+  font-size: 12.5px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+.cta:active { transform: scale(0.98); }
+.cta:focus-visible {
+  outline: 3px solid var(--tinta-texto);
+  outline-offset: 3px;
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,172 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Founders · Link da Bio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: perfil de Instagram que vira página — cabeçalho de perfil, linha de "números", destaques clicáveis com cases, e um botão fixo que leva ao diagnóstico */
+:root{
+  /* paleta da gravura: papel creme + tinta azul */
+  --bg:#F3EDDF;
+  --surface:#EAE3D1;
+  --fg:#101A5E;
+  --muted:#565C82;
+  --line:#DCD3BE;
+  --accent:#2334BD;
+  --accent-ink:#F3EDDF;
+  --accent-soft:#E2DFE6;
+  --display:"Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1446; --surface:#162060; --fg:#F3EDDF; --muted:#AEB2D2; --line:#26307A;
+    --accent:#8F9CFF; --accent-ink:#0D1446; --accent-soft:#1D2875; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1446; --surface:#162060; --fg:#F3EDDF; --muted:#AEB2D2; --line:#26307A;
+  --accent:#8F9CFF; --accent-ink:#0D1446; --accent-soft:#1D2875; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:480px;margin:0 auto;padding-inline:18px;padding-block:20px 120px;display:flex;flex-direction:column;gap:22px}
+
+/* tese */
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,8.4vw,38px);line-height:1.04;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{margin:0;color:var(--muted);font-size:16px;max-width:62ch}
+.lede strong{color:var(--fg);font-weight:600}
+
+/* números estilo perfil */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--line);padding-block:14px}
+.stat{text-align:center;min-width:0;padding-inline:4px}
+.stat + .stat{border-left:1px solid var(--line)}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat small{display:block;color:var(--muted);font-size:12px;line-height:1.3}
+
+/* destaques */
+.label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.highlights{display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;margin-inline:-18px;padding-inline:18px}
+.highlights::-webkit-scrollbar{display:none}
+.hl{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer;color:var(--fg);font:inherit;width:64px}
+.hl .ring{width:62px;height:62px;border-radius:50%;padding:2px;border:2px solid var(--line);display:grid;place-items:center;transition:border-color .2s}
+.hl .ring i{width:100%;height:100%;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-style:normal;font-family:var(--display);font-weight:800;font-size:16px;color:var(--accent)}
+.hl span{font-size:12px;line-height:1.2;text-align:center}
+.hl[aria-pressed="true"] .ring{border-color:var(--accent)}
+.hl:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:12px}
+.case{margin-top:12px;background:var(--surface);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.case b{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1.1}
+.case p{margin:0;color:var(--muted);font-size:14px}
+
+/* o que é */
+.offer{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.row{display:flex;gap:14px;align-items:flex-start;padding:14px 16px}
+.row + .row{border-top:1px solid var(--line)}
+.row .k{flex:none;width:52px;font-family:var(--display);font-weight:800;font-size:18px;color:var(--accent);line-height:1.2;font-variant-numeric:tabular-nums}
+.row .v{min-width:0}
+.row .v b{display:block;font-weight:700;font-size:15px}
+.row .v span{color:var(--muted);font-size:14px}
+
+/* pra quem */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fit div{min-width:0;border-radius:14px;padding:14px;background:var(--surface)}
+.fit h3{margin:0 0 8px;font-size:14px;font-weight:700}
+.fit ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13.5px;line-height:1.35;color:var(--muted)}
+.fit .yes h3{color:var(--accent)}
+.fit .yes{background:var(--accent-soft)}
+@media (max-width:360px){.fit{grid-template-columns:1fr}}
+
+.sign{color:var(--muted);font-size:13px;text-align:center;margin:0}
+
+/* CTA fixo */
+.cta-bar{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(to top,var(--bg) 70%,transparent);padding:18px 18px calc(16px + env(safe-area-inset-bottom,0px))}
+.cta{display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:444px;margin:0 auto;min-height:56px;border-radius:12px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;font-size:17px;line-height:1.15;padding:10px 16px;transition:transform .15s}
+.cta small{font-weight:500;font-size:12.5px;opacity:.85}
+.cta:active{transform:scale(.98)}
+.cta:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap">
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h1>Seu perfil pode ser o <em>melhor vendedor</em> da sua empresa.</h1>
+    <p class="lede">A gente monta com você o posicionamento, a linha de conteúdo e a rotina de gravação para o Instagram trazer cliente. <strong>Você aparece, a gente constrói o caminho.</strong></p>
+  </section>
+
+  <section class="stats" aria-label="Resultados de membros">
+    <div class="stat"><b>3x</b><small>em contratos/mês</small></div>
+    <div class="stat"><b>+R$200 mil</b><small>vendidos pelo perfil</small></div>
+    <div class="stat"><b>5 dias</b><small>pra vender 1 imóvel</small></div>
+  </section>
+
+  <section>
+    <p class="label">Quem já passou por aqui</p>
+    <div class="highlights" role="group" aria-label="Cases">
+      <button class="hl" type="button" aria-pressed="true" data-i="0"><div class="ring"><i>GG</i></div><span>Guilherme Gomes</span></button>
+      <button class="hl" type="button" aria-pressed="false" data-i="1"><div class="ring"><i>GC</i></div><span>Guilherme Camarão</span></button>
+      <button class="hl" type="button" aria-pressed="false" data-i="2"><div class="ring"><i>GP</i></div><span>Guilherme Porto</span></button>
+      <button class="hl" type="button" aria-pressed="false" data-i="3"><div class="ring"><i>DL</i></div><span>Daniel Lane</span></button>
+      <button class="hl" type="button" aria-pressed="false" data-i="4"><div class="ring"><i>IA</i></div><span>Isadora Andrade</span></button>
+    </div>
+    <div class="case" id="case" aria-live="polite">
+      <b>R$ 50 mil → R$ 150 mil</b>
+      <p>em novos contratos por mês. De 3 mil para 13 mil seguidores em menos de 6 meses, 100% orgânico, com a execução dele.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">O que você recebe</p>
+    <div class="offer">
+      <div class="row"><div class="k">90 dias</div><div class="v"><b>8 encontros com o Dante</b><span>Diagnóstico do perfil, posicionamento, roteiro e leitura de números.</span></div></div>
+      <div class="row"><div class="k">1 ano</div><div class="v"><b>Comunidade de empresários</b><span>Grupo, lives semanais e quem está no mesmo jogo que você.</span></div></div>
+      <div class="row"><div class="k">1 ano</div><div class="v"><b>Plataforma de criação</b><span>Banco de ideias e roteiros adaptados ao seu planejamento.</span></div></div>
+    </div>
+  </section>
+
+  <section class="fit">
+    <div class="yes">
+      <h3>É pra você se</h3>
+      <ul>
+        <li>É dono, founder ou profissional liberal</li>
+        <li>Vende serviço de ticket alto</li>
+        <li>Topa ser o rosto do negócio</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Não é pra você se</h3>
+      <ul>
+        <li>Quer terceirizar quem aparece</li>
+        <li>Não vai gravar entre os encontros</li>
+        <li>Espera resultado em 30 dias</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="sign">Dante Araújo e Gustavo Macedo · fundadores da Forno Lab</p>
+</main>
+
+<div class="cta-bar">
+  <!-- Trocar o href pelo link do formulário no Inlead -->
+  <a class="cta" href="#formulario" id="cta">Fazer meu diagnóstico<small>3 minutos · sem custo</small></a>
+</div>
+
+<script>
+const cases=[
+  ["R$ 50 mil → R$ 150 mil","em novos contratos por mês. De 3 mil para 13 mil seguidores em menos de 6 meses, 100% orgânico, com a execução dele."],
+  ["2 mil → 46,4 mil","seguidores, e mais de R$ 200 mil vendidos vindos da presença digital."],
+  ["39 mil seguidores","em menos de um ano, no Direito, um dos nichos mais travados para conteúdo."],
+  ["+8 mil em 1 semana","com um único vídeo, sem tráfego pago. A chamada foi desenhada com a gente."],
+  ["Imóvel vendido em 5 dias","com um vídeo que ela mesma gravou e postou."]
+];
+const box=document.getElementById("case");
+document.querySelectorAll(".hl").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".hl").forEach(x=>x.setAttribute("aria-pressed","false"));
+  b.setAttribute("aria-pressed","true");
+  const c=cases[+b.dataset.i];
+  box.querySelector("b").textContent=c[0];
+  box.querySelector("p").textContent=c[1];
+}));
+</script>
+
+</body></html>
